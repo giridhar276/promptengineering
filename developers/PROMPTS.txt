@@ -1,0 +1,269 @@
+==========================================================================================
+01 END TO END APPLICATION
+==========================================================================================
+
+Act as a senior software architect, FastAPI developer, React developer, PostgreSQL developer, security engineer, QA lead, and DevOps engineer.
+
+Build a complete runnable Customer Support Ticket Management application named SupportDesk.
+
+STACK
+- Python 3.11, FastAPI, SQLAlchemy 2.x, Alembic
+- React 18
+- PostgreSQL 15
+- JWT authentication
+- Docker Compose
+- pytest
+
+REQUIREMENTS
+1. Roles: agent, manager, administrator.
+2. Users log in using email and password.
+3. Administrators create, update, deactivate, and list users.
+4. Agents create tickets and update tickets assigned to them.
+5. Managers assign and update any ticket.
+6. Administrators manage all users and tickets.
+7. Ticket fields: id, title, description, customer_email, priority, category, status, assignee_id, created_at, updated_at.
+8. Priorities: LOW, MEDIUM, HIGH, CRITICAL.
+9. Statuses: OPEN, IN_PROGRESS, RESOLVED, CLOSED.
+10. Only managers and administrators can reopen CLOSED tickets.
+11. Every ticket change creates an immutable audit record.
+12. Search by ticket ID, customer email, status, priority, category, and assignee.
+13. Add pagination, sorting, validation, structured logging, correlation IDs, centralized errors, health, readiness, and version endpoints.
+14. Use secure password hashing and environment variables.
+15. Add indexes for searchable fields.
+
+DELIVER
+1. Architecture summary and folder structure
+2. Every backend file
+3. Every frontend file
+4. Database models and Alembic migration
+5. Dockerfile, docker-compose.yml, .env.example
+6. requirements.txt and package.json
+7. Unit, integration, negative, and authorization tests
+8. curl examples
+9. README with exact run commands
+10. Validation checklist and limitations
+
+RULES
+- Generate complete executable files.
+- No pseudo-code, TODOs, missing imports, or hard-coded secrets.
+- Pin compatible versions.
+- Review syntax, security, transactions, and authorization before presenting.
+
+
+
+
+
+==========================================================================================
+02 REQUIREMENTS TO DESIGN
+==========================================================================================
+
+Act as a principal software architect and business analyst.
+
+Create a complete technical design for a Loan Document Tracking System.
+
+CONTEXT
+A bank currently tracks loan documents using spreadsheets and email. Build an internal system that stores document metadata and secure repository URLs. It must not store actual files in release 1.
+
+STACK AND CONSTRAINTS
+- Python 3.11, FastAPI, PostgreSQL 15
+- Microsoft Azure
+- Azure Entra ID SSO
+- Existing internal document repository
+- Existing email notification service
+- 50 requests per second
+- Audit retention: 7 years
+- Encryption in transit and at rest
+
+ROLES
+Branch Employee, Document Reviewer, Operations Manager, Administrator.
+
+RULES
+1. One loan has many required document types.
+2. Store loan_id, branch_id, document_type, repository_url, received_date, expiry_date, status, reviewer, comments, timestamps.
+3. Statuses: PENDING, VERIFIED, REJECTED, EXPIRED.
+4. Only reviewers verify or reject.
+5. Managers access all branches.
+6. Branch employees access only their branch.
+7. A daily job detects expired and near-expiry documents.
+8. Missing, rejected, and expired documents appear on dashboards.
+9. Every create, update, verify, reject, and delete action is audited.
+10. Send notifications for missing, rejected, and near-expiry documents.
+
+DELIVER
+Executive summary; functional/non-functional requirements; role-permission matrix; user stories and acceptance criteria; happy/alternative/error/edge flows; assumptions/open questions; architecture and Azure mapping; Mermaid context/component/deployment/sequence diagrams; complete API contracts; PostgreSQL DDL; notification/event design; SSO/RBAC; audit/retention; scalability/availability/RTO/RPO; testing; CI/CD; traceability matrix; risks; implementation work packages.
+
+Do not silently invent missing rules. Label uncertain items “Needs confirmation.”
+
+
+
+
+
+==========================================================================================
+03 PRODUCTION CODE
+==========================================================================================
+
+Act as a senior Python 3.11 FastAPI, SQLAlchemy 2.x, PostgreSQL, and pytest developer.
+
+Implement a complete Inventory Reservation API.
+
+REQUEST
+POST /api/v1/reservations
+{"order_id":"ORD-1001","product_id":"PRD-2001","quantity":3}
+
+RULES
+1. Quantity is a positive integer.
+2. Reservation expires after 15 minutes.
+3. Available stock = on_hand - active reserved quantity.
+4. Creation is atomic.
+5. Concurrent requests must not over-reserve.
+6. Same active order_id + product_id returns the existing reservation.
+7. EXPIRED or CANCELLED reservations do not consume stock.
+8. Only ACTIVE reservations can be cancelled or confirmed.
+9. Confirming reduces on-hand stock and marks CONFIRMED.
+10. All operations are logged and audited.
+
+ERRORS
+404 product/reservation missing; 409 insufficient stock or invalid transition; 422 invalid input; sanitized 500 database failure.
+
+DELIVER
+Complete folder structure, requirements.txt, models, schemas, repositories, services, routes, DB configuration, exceptions, logging, Alembic migration, Docker Compose, unit tests, PostgreSQL integration tests, concurrency test for the last unit, curl examples, exact run instructions, and self-review checklist.
+
+Use PostgreSQL row locking and transactions. No pseudo-code, TODOs, omitted imports, or leaked stack traces.
+
+
+
+
+
+==========================================================================================
+04 LEGACY REFACTORING
+==========================================================================================
+
+Act as a principal Python engineer and modernization specialist.
+
+Analyze and refactor legacy_order_service.py for Python 3.11 while keeping SQLite and preserving the public function name process_order.
+
+INTENDED BEHAVIOR
+Look up product, reject missing product or insufficient stock, calculate total, insert order, reduce stock, and commit atomically.
+
+DELIVER
+1. Explain current behavior.
+2. Identify and severity-rate SQL injection, connection leaks, transaction defects, concurrency defects, validation problems, weak errors, and maintainability issues.
+3. Create characterization tests.
+4. Refactor using parameterized SQL, context managers, explicit transactions, dataclasses/typed results, custom exceptions, logging, dependency injection, and type hints.
+5. Prevent overselling under concurrent requests.
+6. Create schema initialization.
+7. Add pytest tests for success, missing product, insufficient stock, invalid quantity, duplicate order ID, DB failure, and two concurrent buyers of the final unit.
+8. Show before/after, behavior changes, migration steps, pull-request description, risks, and rollback.
+
+No pseudo-code or TODOs. Stock must not change unless order insertion succeeds. Connections must close on all paths.
+
+
+
+
+
+==========================================================================================
+05 DEBUGGING RCA
+==========================================================================================
+
+Act as a senior production-support engineer, Python developer, and SRE.
+
+Investigate app.py and application.log.
+
+EXPECTED
+Existing account: 200. Missing account: sanitized 404. Database unavailable: sanitized 503.
+
+EVIDENCE
+Python 3.11, Flask 3.x, Linux, SQLite, Gunicorn 4 workers. Endpoint deployed yesterday. Error rate rose from 0.2% to 4.8%. CPU/memory normal. Failures occur only for unknown IDs.
+
+DELIVER
+Incident summary; timeline; facts/assumptions/unknowns; ranked hypotheses; execution trace; supported root cause with confidence; rejected hypotheses; mitigation; complete corrected implementation with safe DB management, 404/503, correlation IDs, structured logs, sanitized errors; tests reproducing pre-fix failure; tests proving fix; deployment validation; metrics/alerts; formal RCA with impact, cause, contributors, corrective/preventive actions, owner role, and target date.
+
+Do not claim unsupported facts.
+
+
+
+
+
+
+==========================================================================================
+06 API INTEGRATION
+==========================================================================================
+
+Act as an API architect, Python backend developer, integration specialist, and security reviewer.
+
+Implement an enterprise integration between a FastAPI Order Service and Payment Service.
+
+TARGET
+POST /v1/payments; OAuth2 client credentials; Bearer token; JSON; timeout 5 seconds; 300 requests/minute.
+
+RULES
+Approved => PAID. Declined => PAYMENT_FAILED. Pending => PAYMENT_PENDING. Duplicate order requests must not create duplicate charges. Include correlation ID and idempotency key. Audit all attempts. Never log payment tokens.
+
+DELIVER
+Architecture and Mermaid diagrams; Order Service endpoint; OpenAPI 3.1; mapping table; OAuth token caching; timeout/retry/backoff/jitter/circuit breaker/rate limiting; idempotency; correlation propagation; error mapping for 400/401/403/409/429/timeouts/5xx; complete FastAPI server; payment client; mock Payment Service; PostgreSQL persistence; unit/contract/integration/resilience tests; Docker Compose; secret/config design; metrics/alerts; versioning; exact run steps.
+
+Never retry declined payments or unsafe non-idempotent calls. No TODOs, missing imports, credentials, or exposed exceptions.
+
+
+
+
+
+
+==========================================================================================
+07 SECURE CODE REVIEW
+==========================================================================================
+
+Act as a senior application-security engineer.
+
+Review insecure_app.py and config.env for SQL injection, broken authentication/authorization, sensitive-data exposure, hard-coded secrets, path traversal, command injection, unsafe subprocess execution, weak tokens, missing validation/audit logging, insecure configuration, error leakage, DoS, and business-logic flaws.
+
+For every finding provide ID, severity, CWE, exact fragment, exploitation scenario, business impact, remediation, corrected code, and verification test.
+
+Then generate a complete secure replacement with environment configuration, password hashing, JWT, RBAC, parameterized SQL, no SSN exposure, approved-directory file downloads, safe network diagnostics without shell=True, structured audit logging, tests, requirements.txt, Dockerfile, hardening checklist, and residual risks.
+
+Map every finding to supplied code. No TODOs or hard-coded credentials.
+
+==========================================================================================
+08 PERFORMANCE OPTIMIZATION
+==========================================================================================
+
+Act as a performance engineer, database specialist, and senior Python developer.
+
+Optimize slow_app.py using metrics.txt.
+
+DELIVER
+Baseline; bottleneck analysis; N+1 explanation; ranked issues; complexity; complete optimized implementation with bounded pagination, stable JSON, parameter validation, parameterized SQL, safe connections, and bounded query count; SQLite DDL/indexes; PostgreSQL SQL and pooling recommendations; caching only if justified with key/TTL/invalidation/consistency; k6 script; normal/peak/stress/spike/soak tests; acceptance criteria; before/after measurement; metrics/alerts; capacity plan; prioritized roadmap; pytest correctness and pagination tests.
+
+Do not recommend scaling before fixing N+1 and unbounded output. Do not guarantee unmeasured performance.
+
+==========================================================================================
+09 AUTOMATED TESTING
+==========================================================================================
+
+Act as a senior QA engineer, Python 3.11 developer, and test-automation architect.
+
+Create a complete executable test suite for transfer_service.py using pytest, Hypothesis, mypy, Ruff, pytest-cov, and GitHub Actions.
+
+REQUIREMENTS
+Positive amount; sufficient source balance; subtract/add equal amount; preserve total money and Decimal precision; ValueError for invalid amount; InsufficientFundsError for insufficient funds; no input mutation; correct boundary behavior.
+
+DELIVER
+Test strategy; traceability matrix; pytest tests for normal transfer, full balance, one cent, zero, negative, insufficient funds, precision, huge values, conservation, and immutability; Hypothesis property tests; fixtures/builders; requirements-dev.txt; pyproject.toml; GitHub Actions for Python 3.11, Ruff, mypy, tests, 95% coverage gate, coverage artifact; mutation recommendations; flaky-test analysis; defect template; release checklist; verified defects and corrected code only when proven.
+
+No pseudo-code, TODOs, missing imports, or implementation duplication inside tests.
+
+==========================================================================================
+10 DEVOPS CICD
+==========================================================================================
+
+Act as a DevOps architect, Azure engineer, SRE, security engineer, and Python developer.
+
+Create an end-to-end production deployment for main.py.
+
+TARGET
+Python 3.11 FastAPI; GitHub; Azure Kubernetes Service; Azure Container Registry; Terraform; GitHub Actions; Dev/Test/Staging/Production; 99.9% availability; RTO 30 minutes; canary production deployment.
+
+DELIVER
+Architecture; environment/branch/version strategy; multi-stage non-root Dockerfile; .dockerignore; docker-compose.yml; complete Kubernetes or Helm resources including Deployment, Service, Ingress, ConfigMap, Secret references, HPA, PDB, NetworkPolicy, ServiceAccount, resources, liveness/readiness/startup probes; Terraform for resource group, ACR, AKS, Log Analytics, Key Vault, identities, role assignments; GitHub Actions for PR checks, lint, tests, dependency scan, image build, vulnerability scan, ACR push, development deploy, production approval, canary, smoke test, rollback; GitHub OIDC and Key Vault design; TLS; logs/metrics/traces/dashboards/alerts; OpenTelemetry; structured logging; fix unknown products to return sanitized 404; unit/smoke tests; deployment checklists; rollback; incident response; DR; production scorecard; complete README.
+
+No credentials in source control, no latest tag, no root containers, no TODOs. Use least privilege and pin versions.
