@@ -1,0 +1,4 @@
+email,full_name,role,is_active
+admin@supportdesk.local,Admin User,administrator,true
+manager@supportdesk.local,Support Manager,manager,true
+agent@supportdesk.local,Support Agent,agent,true

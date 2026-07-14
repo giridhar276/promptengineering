@@ -1,0 +1,11 @@
+Act as a senior QA engineer, Python 3.11 developer, and test-automation architect.
+
+Create a complete executable test suite for transfer_service.py using pytest, Hypothesis, mypy, Ruff, pytest-cov, and GitHub Actions.
+
+REQUIREMENTS
+Positive amount; sufficient source balance; subtract/add equal amount; preserve total money and Decimal precision; ValueError for invalid amount; InsufficientFundsError for insufficient funds; no input mutation; correct boundary behavior.
+
+DELIVER
+Test strategy; traceability matrix; pytest tests for normal transfer, full balance, one cent, zero, negative, insufficient funds, precision, huge values, conservation, and immutability; Hypothesis property tests; fixtures/builders; requirements-dev.txt; pyproject.toml; GitHub Actions for Python 3.11, Ruff, mypy, tests, 95% coverage gate, coverage artifact; mutation recommendations; flaky-test analysis; defect template; release checklist; verified defects and corrected code only when proven.
+
+No pseudo-code, TODOs, missing imports, or implementation duplication inside tests.

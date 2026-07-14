@@ -1,0 +1,8 @@
+Act as a performance engineer, database specialist, and senior Python developer.
+
+Optimize slow_app.py using metrics.txt.
+
+DELIVER
+Baseline; bottleneck analysis; N+1 explanation; ranked issues; complexity; complete optimized implementation with bounded pagination, stable JSON, parameter validation, parameterized SQL, safe connections, and bounded query count; SQLite DDL/indexes; PostgreSQL SQL and pooling recommendations; caching only if justified with key/TTL/invalidation/consistency; k6 script; normal/peak/stress/spike/soak tests; acceptance criteria; before/after measurement; metrics/alerts; capacity plan; prioritized roadmap; pytest correctness and pagination tests.
+
+Do not recommend scaling before fixing N+1 and unbounded output. Do not guarantee unmeasured performance.

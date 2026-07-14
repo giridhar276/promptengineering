@@ -1,0 +1,27 @@
+Act as a senior Python 3.11 FastAPI, SQLAlchemy 2.x, PostgreSQL, and pytest developer.
+
+Implement a complete Inventory Reservation API.
+
+REQUEST
+POST /api/v1/reservations
+{"order_id":"ORD-1001","product_id":"PRD-2001","quantity":3}
+
+RULES
+1. Quantity is a positive integer.
+2. Reservation expires after 15 minutes.
+3. Available stock = on_hand - active reserved quantity.
+4. Creation is atomic.
+5. Concurrent requests must not over-reserve.
+6. Same active order_id + product_id returns the existing reservation.
+7. EXPIRED or CANCELLED reservations do not consume stock.
+8. Only ACTIVE reservations can be cancelled or confirmed.
+9. Confirming reduces on-hand stock and marks CONFIRMED.
+10. All operations are logged and audited.
+
+ERRORS
+404 product/reservation missing; 409 insufficient stock or invalid transition; 422 invalid input; sanitized 500 database failure.
+
+DELIVER
+Complete folder structure, requirements.txt, models, schemas, repositories, services, routes, DB configuration, exceptions, logging, Alembic migration, Docker Compose, unit tests, PostgreSQL integration tests, concurrency test for the last unit, curl examples, exact run instructions, and self-review checklist.
+
+Use PostgreSQL row locking and transactions. No pseudo-code, TODOs, omitted imports, or leaked stack traces.

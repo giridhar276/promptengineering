@@ -1,0 +1,15 @@
+{
+  "request": {
+    "order_id": "ORD-1001",
+    "customer_id": "CUS-5001",
+    "amount": 1499.99,
+    "currency": "USD",
+    "payment_method_token": "tok_sample_1001"
+  },
+  "response": {
+    "payment_id": "PAY-9001",
+    "order_id": "ORD-1001",
+    "status": "APPROVED",
+    "processed_at": "2026-07-14T10:30:00Z"
+  }
+}

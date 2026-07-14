@@ -1,0 +1,36 @@
+Act as a principal software architect and business analyst.
+
+Create a complete technical design for a Loan Document Tracking System.
+
+CONTEXT
+A bank currently tracks loan documents using spreadsheets and email. Build an internal system that stores document metadata and secure repository URLs. It must not store actual files in release 1.
+
+STACK AND CONSTRAINTS
+- Python 3.11, FastAPI, PostgreSQL 15
+- Microsoft Azure
+- Azure Entra ID SSO
+- Existing internal document repository
+- Existing email notification service
+- 50 requests per second
+- Audit retention: 7 years
+- Encryption in transit and at rest
+
+ROLES
+Branch Employee, Document Reviewer, Operations Manager, Administrator.
+
+RULES
+1. One loan has many required document types.
+2. Store loan_id, branch_id, document_type, repository_url, received_date, expiry_date, status, reviewer, comments, timestamps.
+3. Statuses: PENDING, VERIFIED, REJECTED, EXPIRED.
+4. Only reviewers verify or reject.
+5. Managers access all branches.
+6. Branch employees access only their branch.
+7. A daily job detects expired and near-expiry documents.
+8. Missing, rejected, and expired documents appear on dashboards.
+9. Every create, update, verify, reject, and delete action is audited.
+10. Send notifications for missing, rejected, and near-expiry documents.
+
+DELIVER
+Executive summary; functional/non-functional requirements; role-permission matrix; user stories and acceptance criteria; happy/alternative/error/edge flows; assumptions/open questions; architecture and Azure mapping; Mermaid context/component/deployment/sequence diagrams; complete API contracts; PostgreSQL DDL; notification/event design; SSO/RBAC; audit/retention; scalability/availability/RTO/RPO; testing; CI/CD; traceability matrix; risks; implementation work packages.
+
+Do not silently invent missing rules. Label uncertain items “Needs confirmation.”
