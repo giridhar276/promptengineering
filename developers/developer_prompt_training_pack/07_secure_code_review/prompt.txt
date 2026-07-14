@@ -1,0 +1,9 @@
+Act as a senior application-security engineer.
+
+Review insecure_app.py and config.env for SQL injection, broken authentication/authorization, sensitive-data exposure, hard-coded secrets, path traversal, command injection, unsafe subprocess execution, weak tokens, missing validation/audit logging, insecure configuration, error leakage, DoS, and business-logic flaws.
+
+For every finding provide ID, severity, CWE, exact fragment, exploitation scenario, business impact, remediation, corrected code, and verification test.
+
+Then generate a complete secure replacement with environment configuration, password hashing, JWT, RBAC, parameterized SQL, no SSN exposure, approved-directory file downloads, safe network diagnostics without shell=True, structured audit logging, tests, requirements.txt, Dockerfile, hardening checklist, and residual risks.
+
+Map every finding to supplied code. No TODOs or hard-coded credentials.

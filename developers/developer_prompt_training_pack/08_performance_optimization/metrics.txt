@@ -1,0 +1,6 @@
+50,000 customers; 2,000,000 orders
+p50=4.2s, p95=12.8s, p99=21.4s
+DB CPU=92%; SQL statements/request=50,001
+Response size=180MB
+Target p95 <500ms
+Default page size=50; maximum=200

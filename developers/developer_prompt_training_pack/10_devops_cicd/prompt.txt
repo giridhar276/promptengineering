@@ -1,0 +1,11 @@
+Act as a DevOps architect, Azure engineer, SRE, security engineer, and Python developer.
+
+Create an end-to-end production deployment for main.py.
+
+TARGET
+Python 3.11 FastAPI; GitHub; Azure Kubernetes Service; Azure Container Registry; Terraform; GitHub Actions; Dev/Test/Staging/Production; 99.9% availability; RTO 30 minutes; canary production deployment.
+
+DELIVER
+Architecture; environment/branch/version strategy; multi-stage non-root Dockerfile; .dockerignore; docker-compose.yml; complete Kubernetes or Helm resources including Deployment, Service, Ingress, ConfigMap, Secret references, HPA, PDB, NetworkPolicy, ServiceAccount, resources, liveness/readiness/startup probes; Terraform for resource group, ACR, AKS, Log Analytics, Key Vault, identities, role assignments; GitHub Actions for PR checks, lint, tests, dependency scan, image build, vulnerability scan, ACR push, development deploy, production approval, canary, smoke test, rollback; GitHub OIDC and Key Vault design; TLS; logs/metrics/traces/dashboards/alerts; OpenTelemetry; structured logging; fix unknown products to return sanitized 404; unit/smoke tests; deployment checklists; rollback; incident response; DR; production scorecard; complete README.
+
+No credentials in source control, no latest tag, no root containers, no TODOs. Use least privilege and pin versions.

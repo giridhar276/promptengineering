@@ -1,0 +1,14 @@
+Act as a senior production-support engineer, Python developer, and SRE.
+
+Investigate app.py and application.log.
+
+EXPECTED
+Existing account: 200. Missing account: sanitized 404. Database unavailable: sanitized 503.
+
+EVIDENCE
+Python 3.11, Flask 3.x, Linux, SQLite, Gunicorn 4 workers. Endpoint deployed yesterday. Error rate rose from 0.2% to 4.8%. CPU/memory normal. Failures occur only for unknown IDs.
+
+DELIVER
+Incident summary; timeline; facts/assumptions/unknowns; ranked hypotheses; execution trace; supported root cause with confidence; rejected hypotheses; mitigation; complete corrected implementation with safe DB management, 404/503, correlation IDs, structured logs, sanitized errors; tests reproducing pre-fix failure; tests proving fix; deployment validation; metrics/alerts; formal RCA with impact, cause, contributors, corrective/preventive actions, owner role, and target date.
+
+Do not claim unsupported facts.

@@ -1,0 +1,18 @@
+Act as a principal Python engineer and modernization specialist.
+
+Analyze and refactor legacy_order_service.py for Python 3.11 while keeping SQLite and preserving the public function name process_order.
+
+INTENDED BEHAVIOR
+Look up product, reject missing product or insufficient stock, calculate total, insert order, reduce stock, and commit atomically.
+
+DELIVER
+1. Explain current behavior.
+2. Identify and severity-rate SQL injection, connection leaks, transaction defects, concurrency defects, validation problems, weak errors, and maintainability issues.
+3. Create characterization tests.
+4. Refactor using parameterized SQL, context managers, explicit transactions, dataclasses/typed results, custom exceptions, logging, dependency injection, and type hints.
+5. Prevent overselling under concurrent requests.
+6. Create schema initialization.
+7. Add pytest tests for success, missing product, insufficient stock, invalid quantity, duplicate order ID, DB failure, and two concurrent buyers of the final unit.
+8. Show before/after, behavior changes, migration steps, pull-request description, risks, and rollback.
+
+No pseudo-code or TODOs. Stock must not change unless order insertion succeeds. Connections must close on all paths.

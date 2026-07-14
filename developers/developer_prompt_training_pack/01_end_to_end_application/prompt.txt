@@ -1,0 +1,46 @@
+Act as a senior software architect, FastAPI developer, React developer, PostgreSQL developer, security engineer, QA lead, and DevOps engineer.
+
+Build a complete runnable Customer Support Ticket Management application named SupportDesk.
+
+STACK
+- Python 3.11, FastAPI, SQLAlchemy 2.x, Alembic
+- React 18
+- PostgreSQL 15
+- JWT authentication
+- Docker Compose
+- pytest
+
+REQUIREMENTS
+1. Roles: agent, manager, administrator.
+2. Users log in using email and password.
+3. Administrators create, update, deactivate, and list users.
+4. Agents create tickets and update tickets assigned to them.
+5. Managers assign and update any ticket.
+6. Administrators manage all users and tickets.
+7. Ticket fields: id, title, description, customer_email, priority, category, status, assignee_id, created_at, updated_at.
+8. Priorities: LOW, MEDIUM, HIGH, CRITICAL.
+9. Statuses: OPEN, IN_PROGRESS, RESOLVED, CLOSED.
+10. Only managers and administrators can reopen CLOSED tickets.
+11. Every ticket change creates an immutable audit record.
+12. Search by ticket ID, customer email, status, priority, category, and assignee.
+13. Add pagination, sorting, validation, structured logging, correlation IDs, centralized errors, health, readiness, and version endpoints.
+14. Use secure password hashing and environment variables.
+15. Add indexes for searchable fields.
+
+DELIVER
+1. Architecture summary and folder structure
+2. Every backend file
+3. Every frontend file
+4. Database models and Alembic migration
+5. Dockerfile, docker-compose.yml, .env.example
+6. requirements.txt and package.json
+7. Unit, integration, negative, and authorization tests
+8. curl examples
+9. README with exact run commands
+10. Validation checklist and limitations
+
+RULES
+- Generate complete executable files.
+- No pseudo-code, TODOs, missing imports, or hard-coded secrets.
+- Pin compatible versions.
+- Review syntax, security, transactions, and authorization before presenting.

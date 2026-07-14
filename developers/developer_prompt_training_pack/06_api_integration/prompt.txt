@@ -1,0 +1,14 @@
+Act as an API architect, Python backend developer, integration specialist, and security reviewer.
+
+Implement an enterprise integration between a FastAPI Order Service and Payment Service.
+
+TARGET
+POST /v1/payments; OAuth2 client credentials; Bearer token; JSON; timeout 5 seconds; 300 requests/minute.
+
+RULES
+Approved => PAID. Declined => PAYMENT_FAILED. Pending => PAYMENT_PENDING. Duplicate order requests must not create duplicate charges. Include correlation ID and idempotency key. Audit all attempts. Never log payment tokens.
+
+DELIVER
+Architecture and Mermaid diagrams; Order Service endpoint; OpenAPI 3.1; mapping table; OAuth token caching; timeout/retry/backoff/jitter/circuit breaker/rate limiting; idempotency; correlation propagation; error mapping for 400/401/403/409/429/timeouts/5xx; complete FastAPI server; payment client; mock Payment Service; PostgreSQL persistence; unit/contract/integration/resilience tests; Docker Compose; secret/config design; metrics/alerts; versioning; exact run steps.
+
+Never retry declined payments or unsafe non-idempotent calls. No TODOs, missing imports, credentials, or exposed exceptions.

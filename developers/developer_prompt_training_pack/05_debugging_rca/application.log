@@ -1,0 +1,5 @@
+2026-07-13T10:00:01Z INFO GET /balance/A100 200 12ms
+2026-07-13T10:00:04Z ERROR GET /balance/A999 500 8ms
+TypeError: 'NoneType' object is not subscriptable
+2026-07-13T10:00:05Z ERROR GET /balance/A998 500 7ms
+TypeError: 'NoneType' object is not subscriptable
