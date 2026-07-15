@@ -1,0 +1,51 @@
+transaction_id,customer_name,transaction_date,transaction_time,merchant_name,merchant_category,amount_inr,transaction_status,customer_address,city
+TXN1001,Vikram Iyer,2026-01-01,23:06:43,HomeSquare,Healthcare,1973.31,Reversed,"229, MG Road, Bengaluru",Bengaluru
+TXN1002,Priya Iyer,2026-01-02,00:35:12,StyleHub,Electronics,2331.81,Reversed,"518, Station Road, Hyderabad",Hyderabad
+TXN1003,AaravPatel,2026-01-03,10:17:09,TravelNest,Groceries,60726.34,Pending,"715, Green Avenue, Pune",Pune
+TXN1004,Meera Nair,2026-01-04,noonish,BrightMart,Fashion,7046.66,Reversed,"868, Park Street, Bengaluru",Bengaluru
+TXN1005,Kiran Reddy,,20:39:56,TechWorld,Healthcare,72986.37,Declined,"566, Park Street, Bengaluru",Bengaluru
+TXN1006,Priya Gupta,2026-01-06,03:24:17,HealthPlus,Fashion,3532.25,Pending,,Bengaluru
+TXN1007,Meera Rao,2026-01-07,17:46:15,QuickCart,Dining,2500000.0,Reversed,"651, MG Road, Mumbai",Mumbai
+TXN1008,Sanjay Iyer,2026-01-08,01:14:52,BrightMart,Groceries,74215.3,Pending,"702, Park Street, Pune",
+TXN1009,Priya Rao,2026-01-09,14.30.10,StyleHub,Fashion,20153.79,Reversed,"898, Park Street, Kolkata",Kolkata
+TXN1010,Priya Mehta,not_a_date,23:37:27,StyleHub,Travel,19939.52,Declined,"552, Park Street, Chennai",Chennai
+TXN1011,Meera Sharma,2026-01-11,04:40:10,StyleHub,,38263.52,Approved,"882, Lake Road, Chennai",Chennai
+TXN1012,123 Neha Mehta,2026-01-12,00:43:46,HomeSquare,Fashion,28683.28,Pending,"258, Station Road, Kolkata",Kolkata
+TXN1013,Kiran Patel,2026-01-13,23:56:46,FoodBasket,Healthcare,8455.26,Declined,,Delhi
+TXN1014,Sanjay Rao,2026-01-14,7 PM,BrightMart,Healthcare,63141.03,Pending,"204, MG Road, Pune",Pune
+TXN1015,Ananya Gupta,2026-13-40,07:56:36,HomeSquare,Retail,1558.81,Reversed,"246, Lake Road, Jaipur",Jaipur
+TXN1016,Sanjay Patel,2026-01-16,17:10:16,StyleHub,Electronics,73351.04,Declined,"132, Green Avenue, Bengaluru",Bengaluru
+TXN1017,Ananya Singh,2026-01-17,14:07:15,TravelNest,Retail,29984.52,,"922, Station Road, Pune",Pune
+TXN1018,Priy@ Rao,2026-01-18,02:45:40,BrightMart,Electronics,44164.32,Approved,"226, Lake Road, Hyderabad",Hyderabad
+TXN1019,Meera Mehta,2026-01-19,25:61:00,QuickCart,Fashion,64486.69,Reversed,"244, Park Street, Hyderabad",Hyderabad
+TXN1020,Kiran Iyer,01-20-2026,21:27:22,StyleHub,Dining,58867.99,Reversed,"97, Lake Road, Mumbai",Mumbai
+TXN1021,Meera Sharma,2026-01-21,03:15:12,TravelNest,Healthcare,50535.0,Reversed,@@@ Hyderabad ###,Hyderabad
+TXN1022,Neha Mehta,2026-01-22,20:34:53,BrightMart,Retail,999999.99,Declined,"101, Lake Road, Pune",Pune
+TXN1023,Neha Iyer,2026-01-23,01:10:24,BrightMart,Dining,30540.41,Pending,"886, Green Avenue, Chennai",Chennai
+TXN1024,Sanjay Singh,2026-01-24,99:99:99,BrightMart,Fashion,21465.17,Pending,"159, MG Road, Jaipur",Jaipur
+TXN1025,Neha Mehta,25/01/2026,05:03:32,HomeSquare,Groceries,3855.66,Declined,"942, Station Road, Hyderabad",Hyderabad
+TXN1026,Priya Kumar,2026-01-26,07:37:38,BrightMart,Healthcare,44668.13,Approved,"123, Station Road, Bengaluru",
+TXN1027,Divya Mehta??,2026-01-27,06:42:45,TechWorld,Electronics,49337.25,Pending,"324, Park Street, Kolkata",Kolkata
+TXN1028,Vikram Singh,2026-01-28,00:29:39,HomeSquare,Retail,9902.78,Declined,"324, Lake Road, Kolkata",Kolkata
+TXN1029,Ananya Reddy,2026-01-29,,HealthPlus,Groceries,10021.0,Pending,"901, MG Road, Pune",Pune
+TXN1030,Sanjay Gupta,2026/01/30,04:16:07,HomeSquare,Fashion,50122.95,Declined,"955, Lake Road, Hyderabad",Hyderabad
+TXN1031,Priya Nair,2026-01-31,16:31:16,BrightMart,Retail,21203.54,Reversed,"209, Park Street, Pune",Pune
+TXN1032,Ananya Patel,2026-02-01,05:47:28,StyleHub,Healthcare,3402.1,Approved,"78 Main Road, 000000",Pune
+TXN1033,Ananya Rao,2026-02-02,13:08:02,FoodBasket,,40964.71,Approved,"566, MG Road, Chennai",Chennai
+TXN1034,Priya Reddy,2026-02-03,noonish,QuickCart,Electronics,15834.73,Declined,"363, Station Road, Delhi",Delhi
+TXN1035,Aarav Patel,,13:51:42,TravelNest,Travel,66118.07,Declined,"755, Park Street, Chennai",Chennai
+TXN1036,aarav singh,2026-02-05,14:22:19,TravelNest,Electronics,28752.38,Approved,"228, MG Road, Bengaluru",Bengaluru
+TXN1037,Vikram Reddy,2026-02-06,11:41:32,StyleHub,Fashion,29945.1,Pending,"991, Park Street, Mumbai",Mumbai
+TXN1038,Rahul Rao,2026-02-07,01:06:38,StyleHub,Travel,-4500.0,Pending,"986, Park Street, Hyderabad",Hyderabad
+TXN1039,Sanjay Reddy,2026-02-08,14.30.10,StyleHub,Retail,45505.04,Declined,"395, Station Road, Kolkata",Kolkata
+TXN1040,Ananya Rao,not_a_date,23:57:19,FoodBasket,Fashion,32404.18,Reversed,"322, Lake Road, Delhi",Delhi
+TXN1041,Vikram Mehta,2026-02-10,13:42:24,QuickCart,Healthcare,30239.79,Pending,,Delhi
+TXN1042,Priya Kumar,2026-02-11,19:41:20,HealthPlus,Dining,22860.23,,"805, Station Road, Hyderabad",Hyderabad
+TXN1043,Rahul Reddy,2026-02-12,21:40:39,TechWorld,Retail,38386.93,Declined,"291, Station Road, Mumbai",
+TXN1044,Priya Patel,2026-02-13,7 PM,HomeSquare,Dining,16925.59,Reversed,"26, Lake Road, Pune",Pune
+TXN1045,Kiran Singh,2026-13-40,04:41:44,BrightMart,Groceries,53904.11,Approved,"410, MG Road, Mumbai",Mumbai
+TXN1046,Sanjay Singh,2026-02-15,07:58:54,HomeSquare,Dining,16491.2,Declined,"52, Station Road, Kolkata",Kolkata
+TXN1047,123 Sanjay Rao,2026-02-16,19:52:46,StyleHub,Groceries,50101.57,Reversed,"325, Green Avenue, Jaipur",Jaipur
+TXN1048,Neha Singh,2026-02-17,20:17:49,HealthPlus,Fashion,55799.79,Declined,,Chennai
+TXN1049,Ananya Nair,2026-02-18,25:61:00,TravelNest,Dining,17663.57,Declined,"915, Station Road, Pune",Pune
+TXN1050,Kiran Nair,02-19-2026,13:03:13,StyleHub,Dining,4910.74,Approved,"556, Green Avenue, Mumbai",Mumbai

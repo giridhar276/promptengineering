@@ -1,0 +1,68 @@
+20 Detailed Prompting Tasks for Data Visualization
+
+Use the cleaned versions of:
+1. financial_transactions_dirty.csv
+2. customer_cases_dirty.csv
+
+General instruction for all tasks:
+Act as a financial-services data analyst. Do not write code. Create the requested visualization directly from the uploaded cleaned CSV data. Use clear titles, readable labels, appropriate sorting, and sensible number formatting. Every visualization must be different. After each chart, provide three to five business insights, identify any unusual pattern, and mention any limitation caused by missing, corrected, or low-confidence data.
+
+1. Total Transaction Amount by Merchant Category
+Create a vertical bar chart showing total transaction amount for each merchant category. Sort the bars from highest to lowest. Display the total amount on top of each bar and format values in Indian rupees. Clearly identify the top three categories and calculate their combined contribution to the overall transaction amount. Add a brief explanation of which categories dominate spending and whether any result may be influenced by outliers.
+
+2. Customer Cases by Case Type
+Create a horizontal bar chart showing the number of customer cases for each case type. Sort from the largest count to the smallest. Display the case count at the end of every bar. Highlight the three most common case types through labels or annotations. Explain which service areas create the most customer demand and which case types may require additional staffing or process improvement.
+
+3. Daily Transaction Trend
+Create a line chart showing total transaction amount by transaction date. Add a second line representing the seven-day moving average. Mark unusually high or low transaction days and label the most significant peaks. Explain whether the trend is stable, increasing, decreasing, or irregular. Mention whether corrected or missing dates could affect the interpretation.
+
+4. Cumulative Transaction Growth
+Create an area chart showing cumulative transaction value over time. Use transaction date on the horizontal axis and cumulative amount on the vertical axis. Mark dates where the cumulative total increases unusually fast. Explain whether a small number of large transactions are driving the growth and identify the periods with the highest contribution.
+
+5. Transaction Amount Distribution
+Create a histogram showing the distribution of transaction amounts. Use meaningful ranges so that small, medium, and large transactions are easy to distinguish. Show the average and median transaction amount as reference markers. Explain whether the distribution is balanced, positively skewed, negatively skewed, or dominated by outliers. Mention how extreme values affect the average.
+
+6. Transaction Amount by Merchant Category
+Create a box plot comparing transaction amounts across merchant categories. Show median, lower range, upper range, and unusual values for each category. Sort categories by median transaction amount. Identify categories with the widest variation and the highest outliers. Explain how the box plot differs from simply comparing averages.
+
+7. Account Balance by Priority
+Create a violin plot comparing account balance distributions across priority levels. Show the shape, concentration, spread, and central tendency for each priority. Identify which priority level contains the largest balances and which has the widest variation. Explain whether high-priority cases are associated with higher balances or whether no clear pattern is visible.
+
+8. Transaction Amount Over Time by Status
+Create a scatter plot using transaction date on the horizontal axis and transaction amount on the vertical axis. Use different groups for Approved, Declined, Pending, and Reversed transactions. Mark outliers with a distinct visual treatment. Explain whether certain statuses are associated with larger transaction amounts and identify any unusual clusters.
+
+9. Case-Type Bubble Chart
+Create a bubble chart where each bubble represents a case type. Use average account balance on the vertical axis, case volume for bubble size, and priority level for grouping. Label the largest bubbles. Explain which case types combine high volume with high account balances and which areas may represent the greatest operational risk.
+
+10. Case Status by Priority
+Create a stacked bar chart showing the number of cases in each status within every priority level. Use one bar per priority and divide it into Open, In Review, Escalated, and Resolved sections. Display total case count above each bar. Explain which priority levels have the highest unresolved or escalated share.
+
+11. Transaction Status Percentage by Category
+Create a 100% stacked bar chart showing the percentage distribution of transaction statuses within each merchant category. Ensure every category totals 100%. Label important percentages, especially unusually high Declined, Pending, or Reversed shares. Explain which merchant categories show the strongest approval performance and which require investigation.
+
+12. Relationship Heatmap
+Create a heatmap showing relationships among numerical fields and selected encoded business categories. Include transaction amount, account balance, priority, transaction status, case status, and case type where meaningful. Use clear labels and explain which relationships appear strongest. State that relationships involving encoded categories should be interpreted cautiously and are not proof of causation.
+
+13. Calendar Transaction Heatmap
+Create a calendar-style heatmap showing daily transaction amount across the available date range. Use weeks as rows and days as columns. Highlight the highest-activity and lowest-activity days. Explain whether transaction activity is concentrated around particular days or weeks. Mention whether the small dataset size limits seasonal conclusions.
+
+14. Merchant Contribution Treemap
+Create a treemap showing transaction contribution by merchant category and merchant name. The size of each section should represent total transaction amount. Display labels only for the most significant sections to avoid clutter. Explain which merchants and categories contribute the most and whether one merchant dominates a category.
+
+15. Merchant Hierarchy Sunburst
+Create a sunburst chart using merchant category as the first level, merchant name as the second level, and transaction status as the third level. Size each segment by total transaction amount. Explain how transaction value is distributed across the hierarchy and identify categories where Declined, Pending, or Reversed transactions are unusually prominent.
+
+16. Customer-Case Funnel
+Create a funnel chart showing case counts across Open, In Review, Escalated, and Resolved statuses. Display the count and percentage at each stage. Clearly state that the statuses may not represent a strict sequential workflow. Explain where the largest concentration of cases exists and whether unresolved cases appear significant.
+
+17. Case-Type Radar Comparison
+Create a radar chart comparing the major case types across five normalized measures: total case volume, average account balance, high-priority share, unresolved share, and unassigned-agent share. Use one radar shape per case type. Explain which case types have the broadest operational impact and which perform poorly across multiple measures.
+
+18. Data-Quality Pareto Chart
+Create a Pareto chart showing the frequency of each data-quality issue found during cleaning. Use bars for issue count and a cumulative-percentage line. Sort issues from most frequent to least frequent. Identify the small number of issue types responsible for most data-quality problems and explain where cleaning controls should be strengthened.
+
+19. Priority-to-Status-to-Agent Flow
+Create a Sankey diagram showing the flow from priority level to case status and then to assigned agent. Replace missing agents with Unassigned. Make the size of each flow represent the number of cases. Explain which agents receive the largest workloads, which priorities create the most escalations, and where unassigned work is concentrated.
+
+20. Interactive Financial-Services Dashboard
+Create an interactive dashboard using the cleaned datasets. Include KPI cards for total transaction amount, average transaction amount, total cases, unresolved-case percentage, high-priority cases, and data-quality score. Add a transaction trend chart, merchant-category chart, case-status chart, priority breakdown, and data-quality issue summary. Include filters for date, merchant category, transaction status, case type, priority, and assigned agent. Conclude with an executive summary containing the five most important business insights and three recommended actions.

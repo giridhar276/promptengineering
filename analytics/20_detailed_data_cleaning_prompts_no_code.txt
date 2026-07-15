@@ -1,0 +1,68 @@
+20 Detailed Prompting Tasks for Data Cleaning
+
+Use these two CSV files:
+1. financial_transactions_dirty.csv
+2. customer_cases_dirty.csv
+
+General instruction for all tasks:
+Act as a data-quality analyst working for a consumer financial-services company. Do not write code. Inspect the uploaded CSV file directly and perform the requested data-cleaning activity. Never overwrite the original value without preserving it in a separate field. Do not guess missing information unless the correction can be reasonably inferred from other columns. Clearly separate corrected records, unresolved records, and records requiring manual review. For every task, provide the requested cleaned output, a short explanation of the rules applied, and a summary of how many records were affected.
+
+1. Complete Data-Quality Assessment
+Review both CSV files and perform a complete data-quality assessment before making any corrections. Check for missing values, blank cells, malformed dates, invalid times, inconsistent names, incorrect addresses, duplicate records, unexpected category values, negative financial values, and unusually large amounts. For each issue, identify the affected column, number of impacted records, severity level, and likely business impact. Return a structured quality report containing issue type, affected field, record count, sample values, severity, and recommended action. End with the five most important issues that should be fixed first.
+
+2. Column Name Standardization
+Inspect the column names in both datasets and standardize them so that they are clear, consistent, lowercase, and separated with underscores. Remove unnecessary spaces, symbols, inconsistent abbreviations, and duplicate wording. Do not change the business meaning of any field. Return a mapping table showing original column name, cleaned column name, reason for change, and whether the change is mandatory or optional. Confirm that both files still contain exactly 10 columns after standardization.
+
+3. Customer Name Cleaning
+Clean the customer_name column in both datasets. Detect and correct inconsistent capitalization, names written fully in uppercase or lowercase, numbers inserted into names, special characters, extra spaces, missing spaces between first and last name, repeated words, and blank names. Preserve the original name in a separate field. Create a cleaned customer name, name-quality status, confidence level, and explanation. Do not invent a name when the original value is blank or too damaged to interpret. Return separate lists for corrected names, unresolved names, and names requiring manual verification.
+
+4. Date Format Cleaning
+Inspect transaction_date and opened_date. Convert every recognizable date into the standard format YYYY-MM-DD. Handle values written as DD/MM/YYYY, MM-DD-YYYY, YYYY/MM/DD, text-based dates, and other readable formats. Identify impossible dates such as invalid months, invalid days, or dates that do not exist. Do not guess ambiguous dates unless the format can be inferred confidently from surrounding records. Return the cleaned date, original date, correction status, confidence level, and rejection reason for invalid dates. Also provide a count of valid, corrected, ambiguous, and rejected dates.
+
+5. Time Format Cleaning
+Review transaction_time and opened_time. Convert valid times into HH:MM:SS using the 24-hour format. Recognize values written in 12-hour format, times using periods instead of colons, and times missing seconds. Flag vague values such as “morning,” “evening,” or “noonish,” and reject impossible values such as hours above 23 or minutes above 59. Preserve the original value. Return cleaned time, issue type, correction status, and confidence level. Summarize how many values were converted, rejected, or left unresolved.
+
+6. Missing-Value Treatment Plan
+Identify every missing, blank, or null value in both datasets. For each affected column, decide whether the value should be filled using a business rule, inferred from a related field, replaced with “Unknown,” or left blank for manual review. Do not use one rule for every column. Explain why each treatment is appropriate for that field. Return a missing-value treatment table with column name, number of missing values, treatment rule, justification, and possible business risk. Then provide the cleaned output and clearly mark any values that remain unresolved.
+
+7. Financial Outlier Review
+Inspect amount_inr and account_balance_inr for unusual numerical values. Identify negative values, extremely large values, values far outside the normal range, zero values where they may be suspicious, and possible data-entry mistakes. Do not automatically delete or replace any value. Classify each unusual value as likely valid, suspicious, or invalid based on available context such as status, case type, or transaction information. Return the original value, classification, reason, recommended action, and manual-review flag. Summarize the normal range found in each column.
+
+8. Negative-Value Investigation
+Review all negative values in transaction amounts and account balances. Determine whether each negative value may represent a refund, reversal, credit adjustment, chargeback, overpayment, or possible data-entry error. Use related fields such as transaction_status, merchant_category, case_type, case_status, and priority. Do not assume that every negative value is incorrect. Return a decision table with record ID, original value, possible interpretation, supporting evidence, confidence level, and recommended action. Clearly separate legitimate business values from likely errors.
+
+9. Address Cleaning and Validation
+Inspect customer_address in both datasets. Correct obvious spacing issues, repeated words, misplaced punctuation, unnecessary symbols, placeholder text, incomplete formatting, duplicated city names, and visibly incorrect city references. Do not invent missing street or postal information. Preserve the original address and create a cleaned address, address-quality status, error type, and confidence level. Flag addresses containing placeholders such as “NO ADDRESS,” unusual symbols, invalid city references, or missing essential location details. Provide a manual-review list for addresses that cannot be safely corrected.
+
+10. City and Address Consistency Check
+Compare the city column with the city mentioned inside customer_address in the transaction dataset. Identify exact matches, likely matches, missing city values, and clear mismatches. Where the city is missing but can be confidently extracted from the address, fill the cleaned city field and record the source. Where the address contains “WrongCity” or another inconsistent city, do not silently correct it. Create fields for city_match_status, cleaned_city, correction_source, confidence level, and review_required. Return a mismatch report and summary counts.
+
+11. Categorical Value Standardization
+Review transaction_status, case_status, priority, merchant_category, case_type, and merchant_name. Standardize capitalization, spacing, spelling, and wording so each field uses a consistent approved list of values. Detect blank values, unexpected categories, misspellings, and inconsistent labels that refer to the same meaning. Return an approved-value dictionary for each categorical column. For every changed value, show the original value, standardized value, mapping rule, and confidence level. Do not force unknown values into an incorrect category.
+
+12. Duplicate Record Detection
+Check both datasets for exact duplicates and likely duplicates. Use transaction_id and case_id as primary identifiers, then inspect combinations such as customer name, date, amount, merchant, case type, status, and account balance. Distinguish between exact duplicates, possible duplicates, and legitimate repeated activity. Do not delete any record automatically. Return a duplicate-review table containing record IDs, matching fields, duplicate type, confidence level, and recommended action. Also provide the total number of duplicate groups found.
+
+13. Row-Level Data-Quality Scoring
+Create a data-quality score from 0 to 100 for every record in both datasets. Deduct points for missing values, invalid names, invalid dates, invalid times, address issues, category problems, duplicates, and suspicious numerical values. Explain the scoring method and weighting before applying it. Add data-quality score, quality band, major issues, and manual-review status to every record. Use quality bands such as Excellent, Good, Needs Review, and Poor. Summarize the number of records in each quality band.
+
+14. Detailed Error Report Creation
+Create a separate error report covering every data-quality issue identified in both datasets. Each row in the error report should include dataset name, record ID, column name, original value, issue type, severity, business impact, recommended correction, correction status, and manual-review requirement. Group similar issues together and prioritize them by severity. Do not include corrected values without also showing the original. End with a summary of critical, high, medium, and low severity issues.
+
+15. Before-and-After Quality Comparison
+Compare the original datasets with the cleaned datasets. Measure changes in missing values, invalid dates, invalid times, suspicious names, address problems, duplicates, category inconsistencies, and financial outliers. Return a before-and-after comparison table showing original count, cleaned count, improvement count, improvement percentage, and unresolved count for each issue type. Explain which areas improved the most and which issues still need human review.
+
+16. Controlled Numerical Cleaning
+Clean amount_inr and account_balance_inr without damaging valid business information. Keep legitimate extreme values when supported by context. Correct only values that are clearly malformed or invalid, and leave uncertain values unchanged with a review flag. Create original_value, cleaned_value, outlier_status, correction_reason, confidence_level, and review_required fields. Summarize the number of values retained, corrected, rejected, and sent for review.
+
+17. Full Change Log
+Create a traceable change log for every correction made across both datasets. For each change, record dataset name, record ID, column name, original value, cleaned value, cleaning rule, reason for change, confidence level, and review status. Do not omit small formatting corrections. Group the change log by issue category and provide a final count of total changes by column. Ensure every cleaned value can be traced back to its original value.
+
+18. Customer Matching Across Files
+Match customers appearing in both datasets using cleaned customer names and supporting details where available. Classify matches as Exact Match, Strong Possible Match, Weak Possible Match, or No Match. Do not merge records based only on a similar name when other supporting evidence is absent. Return a matching table with customer names from both datasets, match category, supporting evidence, confidence score, and recommended action. Explain the risk of false matches caused by spelling errors or missing spaces.
+
+19. Final Validation Rules
+Validate the cleaned datasets against a strict final checklist. Confirm that IDs are present and unique, dates follow YYYY-MM-DD, times follow HH:MM:SS, categorical fields use approved values, numerical fields contain valid numbers, names meet basic quality rules, and every correction has an audit trail. Return Pass, Fail, or Needs Review for every validation rule. List all failed records and explain what must be corrected before the datasets are considered ready for analysis.
+
+20. End-to-End Data Cleaning Assignment
+Perform a complete end-to-end cleaning of both datasets. First, profile the data and identify all quality issues. Next, clean names, dates, times, addresses, categories, missing values, duplicates, and numerical anomalies. Preserve original values, create cleaned fields, and avoid unsupported guessing. Return six separate outputs: cleaned transaction data, cleaned customer-case data, unresolved-record report, error report, change log, and executive data-quality summary. The executive summary should include total issues found, total issues corrected, unresolved issues, highest-risk problems, and the top five records requiring manual review.
